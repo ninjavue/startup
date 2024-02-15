@@ -126,17 +126,18 @@
   "patient": [
     {
       "id": "fd73",
-      "last_name": "Boltayev ",
-      "first_name": "Tesha",
-      "father_name": "Qilichboy o'g'li",
-      "passport": "AA1234567",
-      "ill_type": "cfcb",
-      "patient_start": "2021-01-29T19:00:00.000Z",
-      "neighborhood": "Usta Shirin MFY",
+      "last_name": "ddsfa",
+      "first_name": "dsa",
+      "father_name": "fadsf",
+      "passport": "AA1234456",
+      "ill_type": "7702",
+      "patient_start": "2024-02-03T19:00:00.000Z",
+      "neighborhood": "asdfafadfa",
       "date": "2024-02-14T08:50:34.112Z",
       "image": "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
       "district_id": "c9c2",
-      "region_id": "c9c2"
+      "region_id": "c9c2",
+      "birth_date": "2024-02-03T19:00:00.000Z"
     }
   ],
   "ill": [
@@ -152,6 +153,12 @@
       "title": "2-DARAJA",
       "text": "Qo'llarni tez tez yuvub turush zarur",
       "date": "2024-02-14T08:41:06.624Z"
+    },
+    {
+      "id": "aed8",
+      "title": "3-DARAJA",
+      "text": "Qo'llarni tez tez yuvub turush zarur",
+      "date": "2024-02-15T12:53:41.653Z"
     }
   ]
 }

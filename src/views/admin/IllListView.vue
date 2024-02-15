@@ -165,5 +165,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/pages/region.scss";
+@import "../../styles/admin/region.scss";
 </style>

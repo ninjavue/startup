@@ -104,7 +104,7 @@
             </el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
+        <el-col :span="8">
           <el-form-item label="Passport seriyasi *">
             <el-input
               v-model="patientList.passport"
@@ -113,7 +113,21 @@
             </el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
+        <el-col :span="8">
+          <el-form-item label="Tug'ulgan sana *" style="width: 100%">
+            <div class="demo-date-picker" style="width: 100%">
+              <div class="block w-full" style="width: 100%">
+                <el-date-picker
+                  style="width: 100%"
+                  v-model="patientList.birth_date"
+                  type="date"
+                  placeholder="Sanani tanlang"
+                />
+              </div>
+            </div>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
           <el-form-item label="Kassalik turi *">
             <el-select v-model="patientList.ill_type">
               <el-option
@@ -127,35 +141,37 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="Bemor rasmi *">
-            <el-upload action="#" list-type="picture-card" :auto-upload="false">
-              <el-icon><i class="fa-solid fa-plus"></i></el-icon>
-
-              <template #file="{ file }" v-if="showImage">
-                <div>
-                  <img
-                    class="el-upload-list__item-thumbnail"
-                    :src="file.url"
-                    alt=""
-                  />
-                  <span class="el-upload-list__item-actions">
-                    <span
-                      class="el-upload-list__item-preview"
-                      @click="handlePictureCardPreview(file)"
-                    >
-                      <el-icon>
-                        <i class="fa-solid fa-magnifying-glass-plus"></i>
-                      </el-icon>
-                    </span>
-                    <span
-                      class="el-upload-list__item-delete"
-                      @click="handleRemove(file)"
-                    >
-                      <el-icon><i class="fa-solid fa-trash-can"></i></el-icon>
-                    </span>
-                  </span>
-                </div>
-              </template>
-            </el-upload>
+            <div style="display: flex">
+              <div
+                v-if="!fileImage"
+                class="upload"
+                for="image"
+                @click="uploadImage"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </div>
+              <input
+                @change="imageHandle"
+                type="file"
+                accept="image/*"
+                ref="imageInput"
+                style="display: none"
+              />
+              <img
+                class="upload-image"
+                :src="fileImage"
+                alt="Tanlangan Rasm"
+                v-if="fileImage"
+              />
+              <div class="gr-btn" v-if="fileImage">
+                <el-button circle type="primary" @click="imageViewHandle">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i>
+                </el-button>
+                <el-button type="danger" circle @click="imageDelHandle">
+                  <i class="fa-solid fa-trash-can"></i>
+                </el-button>
+              </div>
+            </div>
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -200,7 +216,7 @@
       </div>
     </el-form>
   </el-dialog>
-  <el-dialog v-model="dialogVisible">
+  <el-dialog v-model="dialogVisible" style="max-width: 400px; max-height: auto">
     <img
       style="width: 100%; height: auto"
       :src="dialogImageUrl"
@@ -219,7 +235,7 @@ export default {
       district: {},
       patientList: {},
       options: ["OITS", "OIV"],
-      file: {},
+      fileImage: "",
       dialogVisible: false,
       dialogImageUrl: "",
       showImage: false,
@@ -237,15 +253,23 @@ export default {
   },
 
   methods: {
-    //image upload
-    handlePictureCardPreview(file) {
-      this.dialogImageUrl = file.url;
+    imageViewHandle() {
+      this.dialogImageUrl = this.fileImage;
       this.dialogVisible = true;
     },
-    handleRemove(file) {
-      file.url = "";
+    imageDelHandle() {
+      this.fileImage = "";
     },
-    //addd/
+    uploadImage() {
+      this.$refs.imageInput.click();
+    },
+    imageHandle(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const image = URL.createObjectURL(file);
+        this.fileImage = image;
+      }
+    },
     IllType(id) {
       let t = "";
       this.ills.map((ill) => {
@@ -263,7 +287,8 @@ export default {
         this.patientList.passport &&
         this.patientList.ill_type &&
         this.patientList.patient_start &&
-        this.patientList.neighborhood
+        this.patientList.neighborhood &&
+        this.patientList.birth_date
       ) {
         this.patientList.date = new Date();
         this.patientList.image = this.image;
@@ -284,11 +309,21 @@ export default {
           this.patientList = res.data;
           this.isModal = true;
           this.toggleBtn = true;
+          this.fileImage = this.image;
         });
       }
     },
     save() {
-      if (this.patientList) {
+      if (
+        this.patientList.first_name &&
+        this.patientList.last_name &&
+        this.patientList.father_name &&
+        this.patientList.passport &&
+        this.patientList.ill_type &&
+        this.patientList.patient_start &&
+        this.patientList.neighborhood &&
+        this.patientList.birth_date
+      ) {
         this.$store.dispatch("editPatient", this.patientList);
         this.$message({
           message: `Bemor muaffaqiyatli yangilandi.`,
@@ -330,5 +365,44 @@ export default {
 </script>
   
   <style lang="scss" scoped>
-@import "../styles/pages/region.scss";
+@import "../../styles/admin/region.scss";
+
+.upload {
+  width: 120px;
+  height: 120px;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    border: 1px dashed #4980e6;
+    & i {
+      color: #4980e6;
+    }
+  }
+  & i {
+    font-size: 32px;
+    color: #ccc;
+  }
+  &-image {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}
+
+.gr-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  & .el-button:last-child {
+    margin-top: 6px;
+    margin-left: -1px;
+  }
+}
 </style>

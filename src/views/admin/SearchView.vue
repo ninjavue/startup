@@ -14,13 +14,13 @@
           style="max-width: 460px; min-height: 100%; padding: 5px 10px"
         >
           <el-form-item label="Familiya *">
-            <el-input v-model="searchList.first_name" />
+            <el-input v-model="searchList.first_name" placeholder="Familiya" />
           </el-form-item>
           <el-form-item label="Ism *">
-            <el-input v-model="searchList.last_name" />
+            <el-input v-model="searchList.last_name" placeholder="Ism" />
           </el-form-item>
           <el-form-item label="Otasi *">
-            <el-input v-model="searchList.father_name" />
+            <el-input v-model="searchList.father_name" placeholder="Otasi" />
           </el-form-item>
           <el-form-item label="Viloyatni tanlang *">
             <el-select
@@ -135,9 +135,12 @@ export default {
       console.log(this.searchList);
     },
   },
+  mounted() {
+    document.title = "O'zbekiston Respublikasi Sog'liqni Saqlash Vazirlig";
+  },
 };
 </script>
 
 <style lang="scss">
-@import "../styles/pages/search.scss";
+@import "../../styles/admin/search.scss";
 </style>

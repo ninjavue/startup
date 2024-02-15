@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-left">
       <div class="logo">
-        <img src="../../assets/images/logo.png" alt="logo" />
+        <img src="../../../assets/images/logo.png" alt="logo" />
         <div class="logo-text">
           O'zbekiston Respublikasi Sog'liqni Saqlash Vazirligi
         </div>
@@ -42,5 +42,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/lib/header.scss";
+@import "../../../styles/admin/lib/header.scss";
 </style>

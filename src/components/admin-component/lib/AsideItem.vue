@@ -8,15 +8,15 @@
     :collapse="toggle"
   >
     <el-menu-item v-for="(item, i) of list" :index="i" :key="i">
-      <router-link :to="item.link">
+      <router-link :to="`/admin${item.link}`">
         <el-icon><i :class="item.icon"></i></el-icon>
         <span v-if="!toggle" class="pl-2">{{ item.title }} </span></router-link
       >
     </el-menu-item>
   </el-menu>
 </template>
-  
-<script>
+    
+  <script>
 import { inject } from "vue";
 
 export default {
@@ -54,7 +54,7 @@ export default {
   },
 };
 </script>
-  
-  <style lang="scss">
-@import "../../styles/lib/aside.scss";
+    
+    <style lang="scss">
+@import "../../../styles/admin/lib/aside.scss";
 </style>

@@ -18,7 +18,7 @@
         <template #default="scope">
           <router-link
             class="table-link"
-            :to="'/region/' + scope.row.link + '/' + scope.row.id"
+            :to="'/admin/region/' + scope.row.link + '/' + scope.row.id"
           >
             {{ scope.$index + 1 }}
           </router-link>
@@ -29,7 +29,7 @@
         <template #default="scope">
           <router-link
             class="table-link"
-            :to="'/region/' + scope.row.link + '/' + scope.row.id"
+            :to="'/admin/region/' + scope.row.link + '/' + scope.row.id"
           >
             {{ scope.row.title }}
           </router-link>
@@ -39,7 +39,7 @@
         <template #default="scope">
           <router-link
             class="table-link"
-            :to="'/region/' + scope.row.link + '/' + scope.row.id"
+            :to="'/admin/region/' + scope.row.link + '/' + scope.row.id"
           >
             {{ formatDateTime(scope.row.date) }}
           </router-link>
@@ -49,7 +49,7 @@
         <template #default="scope">
           <router-link
             class="mr-3"
-            :to="'/region/' + scope.row.link + '/' + scope.row.id"
+            :to="'/admin/region/' + scope.row.link + '/' + scope.row.id"
           >
             <el-button type="info">
               <i class="fa-solid fa-eye" style="color: #1d2d5b"></i>
@@ -184,5 +184,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/pages/region.scss";
+@import "../../styles/admin/region.scss";
 </style>

@@ -19,8 +19,9 @@
           <router-link
             class="table-link"
             :to="
-              '/region/' +
+              '/admin/region/' +
               region.link +
+              '/' +
               scope.row.region_id +
               '/district/' +
               scope.row.link +
@@ -38,8 +39,9 @@
           <router-link
             class="table-link"
             :to="
-              '/region/' +
+              '/admin/region/' +
               region.link +
+              '/' +
               scope.row.region_id +
               '/district/' +
               scope.row.link +
@@ -56,8 +58,9 @@
           <router-link
             class="table-link"
             :to="
-              '/region/' +
+              '/admin/region/' +
               region.link +
+              '/' +
               scope.row.region_id +
               '/district/' +
               scope.row.link +
@@ -74,8 +77,9 @@
           <router-link
             class="table-link"
             :to="
-              '/region/' +
+              '/admin/region/' +
               region.link +
+              '/' +
               scope.row.region_id +
               '/district/' +
               scope.row.link +
@@ -230,5 +234,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/pages/region.scss";
+@import "../../styles/admin/region.scss";
 </style>

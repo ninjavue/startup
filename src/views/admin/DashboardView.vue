@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ChartItem from "@/components/ChartItem.vue";
+import ChartItem from "@/components/admin-component/ChartItem.vue";
 
 export default {
   data() {
@@ -20,6 +20,11 @@ export default {
           label: "2-DARAJA",
           backgroundColor: "#E3EF3B",
           data: [10, 50, 32, 25, 78, 67, 43, 45, 32, 86, 56, 36],
+        },
+        {
+          label: "3-DARAJA",
+          backgroundColor: "#47CA06",
+          data: [20, 70, 72, 55, 38, 37, 55, 85, 12, 46, 76, 36],
         },
       ],
     };
