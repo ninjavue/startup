@@ -1,0 +1,13 @@
+ul.el-menu {
+    border-right: 0;
+
+    .el-menu-item {
+        a {
+            color: white;
+
+            &.router-link-active {
+                color: #a09e9e;
+            }
+        }
+    }
+}

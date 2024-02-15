@@ -1,0 +1,33 @@
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h1 {
+        font-weight: 500;
+    }
+}
+
+
+.el-card {
+    min-height: calc(100vh - 100px);
+}
+
+.table-link {
+    color: #333;
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: underline;
+        color: rgb(79, 79, 250);
+    }
+}
+
+.el-table {
+    max-height: 440px;
+    overflow-y: scroll;
+}
+
+// .el-table .cell {
+//     text-wrap: nowrap;
+// }

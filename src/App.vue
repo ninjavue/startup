@@ -1,30 +1,49 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <el-container>
+    <el-header>
+      <HeaderItem />
+    </el-header>
+    <el-container>
+      <el-aside
+        :width="`${toggle ? '70px' : '250px'}`"
+        style="transition: all 0.5s"
+      >
+        <AsideItem />
+      </el-aside>
+      <el-main>
+        <router-view />
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
+
+<script>
+import { provide, ref } from "vue";
+import AsideItem from "./components/lib/AsideItem.vue";
+import HeaderItem from "./components/lib/HeaderItem.vue";
+
+export default {
+  components: {
+    AsideItem,
+    HeaderItem,
+  },
+  setup() {
+    const toggle = ref(false);
+    provide("toggle", toggle);
+    return {
+      toggle,
+    };
+  },
+
+  mounted() {
+    this.$store.dispatch("allRegion");
+    this.$store.dispatch("allIll");
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import "bulma/css/bulma.min.css";
+@import "./styles/app.scss";
 </style>

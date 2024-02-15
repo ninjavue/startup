@@ -1,0 +1,44 @@
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h1 {
+        font-weight: 500;
+    }
+}
+
+
+.el-card {
+    min-height: calc(100vh - 100px);
+}
+
+.search-avatar {
+    width: 150px;
+    height: 165px;
+}
+
+.search-border {
+    border: 2px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-box {
+    padding-left: 60px;
+    margin-top: 10px;
+
+    &>div {
+        margin-bottom: 10px;
+    }
+}
+
+.search-result {
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+
+    &>div {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+}
